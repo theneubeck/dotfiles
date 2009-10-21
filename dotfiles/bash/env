@@ -1,0 +1,12 @@
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:$PATH
+export JAVA_HOME=/usr/
+
+export EDITOR="mate -w"
+export PATH=$PATH:~/bin
+
+# -- start rip config -- #
+RIPDIR=/Users/jensneubeck/.rip
+RUBYLIB="$RUBYLIB:$RIPDIR/active/lib"
+PATH="$PATH:$RIPDIR/active/bin"
+export RIPDIR RUBYLIB PATH
+# -- end rip config -- #
