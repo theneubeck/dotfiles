@@ -41,4 +41,4 @@ BWHITE='\e[47m'
 
 # 
 
-PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\] \[$RED\] $(git_status) \[$NO_COLOR\] \$ "
+PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\] \[$RED\]\[$NO_COLOR\] \$ "
