@@ -38,10 +38,7 @@ BMAGENTA='\e[45m'
 BCYAN='\e[46m'
 BWHITE='\e[47m'
 
-function see_git() {
-  ruby -e "print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')"
-}
 
-# \[$RED\] $(see_git)
+# 
 
-PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\] \[$NO_COLOR\] \$ "
+PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\] \[$RED\] $(git_status) \[$NO_COLOR\] \$ "
