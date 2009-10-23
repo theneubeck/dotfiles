@@ -62,7 +62,7 @@ alias newn="cd /Users/jensneubeck/newsline"
 alias ben="cd /Users/jensneubeck/newsline/fenix/bennu"
 
 # Utility
-alias reload='source ~/bin/dotfiles/bash/aliases'
+alias reload='source ~/.bashrc'
 alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
 alias ee="mate ~/bin/dotfiles/bash/env"
 
