@@ -14,6 +14,26 @@ tab () {
 EOF
 }
 
+# ==== newsline ====
+
+function gid_send_test() {
+  scp $2 gideon@gideon.test.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.test.newsline.se $1
+}
+
+function gid_manifest() {
+  ssh $1 "cd /data/files/incoming/$2/data/ && ls > ../queue/$2_001.txt"
+}
+
+function gid_send_acc() {
+  scp $2 gideon@gideon.acceptans.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.acceptans.newsline.se $1
+}
+
+function gid_send() {
+  scp $2 gideon@gideon.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.newsline.se $1
+}
+
+# ==================
+
 function take() { 
     mkdir -p "$1"
     cd "$1" 
@@ -41,6 +61,11 @@ function command_exists {
     fi
 }
 
+# changing directory to code project
+function n { 
+  cd ~/newsline/$1; 
+}
+
 # === Git ===
 
 # Commit pending changes and quote all args as message
@@ -54,13 +79,17 @@ function gm() {
 
 # get the name of the branch we are on
 function parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 function git_status() {
   if current_git_status=$(git status 2> /dev/null | grep 'added to commit' 2> /dev/null); then
-    echo "☢"
+    echo "*"
   fi
+}
+
+function loc() {
+  find . -name "*$1*"
 }
 
 # Disable the git prompt method when git does not exist in path;
@@ -74,14 +103,3 @@ if [ $(command_exists git) == 0 ]; then
     echo ""
   }
 fi
-
-# shell util
-alias '..'='cd ..'
-alias '...'='../..'
-alias '....'='../../..'
-alias '.....'='../../../..'
-      
-alias '..2'='../..'
-alias '..3'='../../..'
-alias '..4'='../../../..'
-alias '..5'='../../../../..'

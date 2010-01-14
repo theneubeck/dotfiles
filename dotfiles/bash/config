@@ -41,4 +41,11 @@ BWHITE='\e[47m'
 
 # 
 
-PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\] \[$RED\]\[$NO_COLOR\] \$ "
+function set_ps1() {
+  PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\]\[$RED\]$(parse_git_branch)$(git_status)\[$NO_COLOR\]\$ "
+}
+
+PROMPT_COMMAND=set_ps1
+
+
+
