@@ -2,7 +2,7 @@
 alias ss='script/server --debugger'
 alias sc='script/console'
 alias sg='script/generate'
-alias rmate='mate app/controllers app/models app/views app/helpers config lib public/javascripts script public/stylesheets'
+alias rmate='mate app/controllers app/models app/views app/helpers db config lib public/javascripts script public/stylesheets'
 alias runmate='mate app config lib public/javascripts script public/stylesheets && mate spec'
 alias att='autotest'
 alias r='rake'
@@ -38,6 +38,7 @@ alias gpl="git pull --rebase"
 alias gs="git stash"
 alias gsa="git stash apply"
 alias gscl="git stash clear && git stash"
+alias gspl="git stash clear && git stash && gpl"
 alias gp='git push'
 alias ga='git add .'
 
@@ -54,8 +55,11 @@ alias devbool="ssh jens@dev-03.newsline.se"
 alias devbennu="ssh jens@dev-11.newsline.se"
 alias devsolr="ssh jens@dev-12.newsline.se"
 
-alias accbennu="ssh jens@dev-13.newsline.se"
+alias accbennu="ssh jens@bennu.acceptance.newslab.se"
 alias accsolr="ssh jens@dev-14.newsline.se"
+
+alias utv="ssh jens@utv.newsline.se"
+alias bamse="ssh jens@bamse"
 
 # local
 alias newn="cd /Users/jensneubeck/newsline"
@@ -73,3 +77,14 @@ function cdc() {
 alias cls='clear; ls'
 alias l.='ls -d .[^.]*'
 alias l='ls -lhGt'  # -l long listing, most recent first
+
+# shell util
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
+alias '.....'='cd ../../../..'
+      
+alias '..2'='cd ../..'
+alias '..3'='cd ../../..'
+alias '..4'='cd ../../../..'
+alias '..5'='cd ../../../../..'
