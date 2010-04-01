@@ -78,3 +78,8 @@ if [ $(command_exists git) == 0 ]; then
     echo ""
   }
 fi
+
+# commits svn files matching criteria with message
+function svn_commit_it() {
+  svn ci -m $2  $(svn st | grep $1 | cut -d" " -f7 - | xargs)
+}
