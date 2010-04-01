@@ -47,5 +47,4 @@ function set_ps1() {
 
 PROMPT_COMMAND=set_ps1
 
-
-
+if [[ -s /Users/jensneubeck/.rvm/scripts/rvm ]] ; then source /Users/jensneubeck/.rvm/scripts/rvm ; fi

@@ -14,26 +14,6 @@ tab () {
 EOF
 }
 
-# ==== newsline ====
-
-function gid_send_test() {
-  scp $2 gideon@gideon.test.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.test.newsline.se $1
-}
-
-function gid_manifest() {
-  ssh $1 "cd /data/files/incoming/$2/data/ && ls > ../queue/$2_001.txt"
-}
-
-function gid_send_acc() {
-  scp $2 gideon@gideon.acceptans.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.acceptans.newsline.se $1
-}
-
-function gid_send() {
-  scp $2 gideon@gideon.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.newsline.se $1
-}
-
-# ==================
-
 function take() { 
     mkdir -p "$1"
     cd "$1" 
@@ -41,13 +21,13 @@ function take() {
 
 # bak: Renames file to *~
 # usage: bak <fname>
-# example: important.sh -> important.sh~
+# example: important.sh -> important.sh.bak~
 function bak() {
   mv "$1" "$1.bak~"
 }
 
 function killnamed () { 
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill 
+    ps ax | grep $1 | grep -x "grep" | cut -d ' ' -f 1 | xargs kill 
 }
 
 # Outputs 1 when the given command is found in PATH. Outputs 0 otherwise.
@@ -59,11 +39,6 @@ function command_exists {
     else
       echo 0
     fi
-}
-
-# changing directory to code project
-function n { 
-  cd ~/newsline/$1; 
 }
 
 # === Git ===
