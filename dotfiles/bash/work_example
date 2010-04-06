@@ -5,53 +5,9 @@ alias db2="ssh jens@rebirthdb2.agent25.se"
 alias bool1="ssh jens@bool1.agent25.se"
 alias bool2="ssh jens@bool2.agent25.se"
 
-# ssh, gideon
-alias gideon="ssh gideon@gideon-01.newsline.se"
-alias gidacc="ssh gideon@gideon.acceptanstest.newsline.se"
-alias gidaccpre="ssh gideon@preproc.acceptanstest.newsline.se"
-alias gidtest="ssh gideon@gideon.test.newsline.se"
-alias gidtestpre="ssh gideon@preproc.test.newsline.se"
-
-# staging
-alias devpu="ssh deployer@dev-01.newsline.se"
-alias devdb="ssh jens@dev-04.newsline.se"
-alias devwf="ssh jens@dev-05.newsline.se"
-alias devbool="ssh jens@dev-03.newsline.se"
-
-alias devbennu="ssh jens@dev-11.newsline.se"
-alias devsolr="ssh jens@dev-12.newsline.se"
-
-alias accbennu="ssh jens@bennu.acceptance.newslab.se"
-alias accsolr="ssh jens@dev-14.newsline.se"
-
-alias utv="ssh jens@utv.newsline.se"
-alias bamse="ssh jens@bamse"
-
-# local
-alias newn="cd /Users/jensneubeck/newsline"
-alias ben="cd /Users/jensneubeck/newsline/fenix/bennu"
-
-# ==== newsline ====
-
-function gid_send_test() {
-  scp $2 gideon@gideon.test.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.test.newsline.se $1
-}
-
-function gid_manifest() {
-  ssh $1 "cd /data/files/incoming/$2/data/ && ls > ../queue/$2_001.txt"
-}
-
-function gid_send_acc() {
-  scp $2 gideon@gideon.acceptans.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.acceptans.newsline.se $1
-}
-
-function gid_send() {
-  scp $2 gideon@gideon.newsline.se:/data/files/incoming/$1/data && gid_manifest gideon@gideon.newsline.se $1
-}
-
 # ==================
 
 # changing directory to code project
-function n { 
-  cd ~/newsline/$1; 
+function c {
+  cd ~/code/my_apps/$1
 }
