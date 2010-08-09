@@ -3,6 +3,13 @@ alias ss='script/server --debugger'
 alias sc='script/console'
 alias sg='script/generate'
 alias sdb='script/dbconsole'
+# New Rails
+alias rs='script/rails server'
+alias rc='script/rails console'
+alias rg='script/rails generate'
+alias rdb='script/rails db'
+
+
 alias rmate='mate app db config lib public/javascripts public/stylesheets spec features'
 alias runmate='mate app config lib public/javascripts script public/stylesheets && mate spec'
 alias att='autotest'
@@ -12,6 +19,7 @@ alias rs='script/spec --color'
 alias rsh='script/spec --format html'
 alias rsf="spec -cf specdoc"
 
+alias pd="git push && cap deploy:web:disable && cap deploy:migrations && cap deploy:web:enable"
 
 # Jrails
 alias jss='jruby script/server'
@@ -45,6 +53,10 @@ function cdc() {
 alias cls='clear; ls'
 alias l.='ls -d .[^.]*'
 alias l='ls -lhGt'  # -l long listing, most recent first
+
+function lsf() {
+  echo "$PWD/$1"
+}
 
 # shell util
 alias '..'='cd ..'
