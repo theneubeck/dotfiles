@@ -31,7 +31,6 @@ alias jg='jruby -S'
 # git
 alias gst="git status"
 alias gpl="git pull --rebase"
-alias gs="git stash"
 alias gsa="git stash apply"
 alias gscl="git stash clear && git stash"
 alias gspl="git stash clear && git stash && gpl"
