@@ -19,11 +19,11 @@ function take() {
     cd "$1" 
 }
 
-# bak: Renames file to *~
+# bak: bakup copy file to *~
 # usage: bak <fname>
-# example: important.sh -> important.sh.bak~
+# example: important.sh -> important.sh.bak
 function bak() {
-  mv "$1" "$1.bak~"
+  cp "$1" "$1.bak"
 }
 
 function killnamed () { 

@@ -42,8 +42,8 @@ alias spl="git svn rebase"
 
 # Utility
 alias reload='source ~/.bashrc'
-alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
-alias ee="mate ~/bin/dotfiles/bash/env"
+alias ea='mvim -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
+alias ee="mvim ~/bin/dotfiles/bash/env"
 
 function cdc() { 
     cd $1; ls 
