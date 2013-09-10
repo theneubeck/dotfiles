@@ -2,3 +2,22 @@ source ~/bin/dotfiles/bash/completion_scripts/git_completion
 complete -C ~/bin/dotfiles/bash/completion_scripts/rake_completion -o default rake
 complete -C ~/bin/dotfiles/bash/completion_scripts/project_completion -o default c
 complete -C ~/bin/dotfiles/bash/completion_scripts/capistrano_completion -o default cap
+
+_complete_ssh_hosts ()
+{
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+                        cut -f 1 -d ' ' | \
+                        sed -e s/,.*//g | \
+                        grep -v ^# | \
+                        uniq | \
+                        grep -v "\[" ;
+                cat ~/.ssh/config | \
+                        grep "^Host " | \
+                        awk '{print $2}'
+                `
+        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+        return 0
+}
+complete -F _complete_ssh_hosts ssh

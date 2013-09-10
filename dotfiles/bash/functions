@@ -19,6 +19,10 @@ function take() {
     cd "$1" 
 }
 
+function lsp() {
+	echo "$PWD/$(ls $1)"
+}
+
 # bak: bakup copy file to *~
 # usage: bak <fname>
 # example: important.sh -> important.sh.bak
