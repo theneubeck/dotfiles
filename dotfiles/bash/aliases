@@ -69,3 +69,6 @@ alias '..4'='cd ../../../..'
 alias '..5'='cd ../../../../..'
 
 alias iphonesim='/Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator'
+
+
+alias cath='highlight --out-format=xterm256'
