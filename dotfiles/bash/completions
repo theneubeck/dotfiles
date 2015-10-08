@@ -21,3 +21,13 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
+
+_complete_exp_projects ()
+{
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        comp_proj=`ls /Users/jens/code/work/scg/exp/code | xargs `
+        COMPREPLY=( $(compgen -W "${comp_proj}" -- $cur))
+        return 0
+}
+complete -F _complete_exp_projects c
