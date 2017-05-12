@@ -19,6 +19,14 @@ function take() {
     cd "$1" 
 }
 
+function cd() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then 
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && [[ -s .nvmrc ]] && nvm use
+}
+
 function lsp() {
 	echo "$PWD/$(ls $1)"
 }
@@ -56,6 +64,14 @@ function gm() {
     git commit -v -m "$*"
 }
 
+function gcm() {
+  git checkout master
+}
+
+function gpop() {
+  git checkout -
+}
+
 # get the name of the branch we are on
 function parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -69,6 +85,14 @@ function git_status() {
 
 function loc() {
   find . -name "*$1*"
+}
+
+function lang_version() {
+  if [[ -f .nvmrc ]]; then
+    echo -en "(node $(node --version 2>&1))"
+  elif [[ -d .git ]]; then
+    echo -en "($(python --version 2>&1))"
+  fi
 }
 
 # Disable the git prompt method when git does not exist in path;
@@ -86,4 +110,8 @@ fi
 # commits svn files matching criteria with message
 function svn_commit_it() {
   svn ci -m $2  $(svn st | grep $1 | cut -d" " -f7 - | xargs)
+}
+
+function origrm() {
+  find . -name "*.orig" -delete
 }

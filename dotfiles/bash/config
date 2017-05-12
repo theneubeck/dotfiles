@@ -42,7 +42,10 @@ BWHITE='\e[47m'
 # 
 
 function set_ps1() {
-  PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\]\[$RED\]$(parse_git_branch)$(git_status)\[$NO_COLOR\]\$ "
+  # hack, look for nvm first
+  [[ -f .nvmrc ]] && nvm use > /dev/null 2>&1
+  [[ -f env/bin/activate ]] && source env/bin/activate > /dev/null 2>&1
+  PS1="\[$EGREEN\]\u\[$WHITE\]:\[$EBLUE\]\w\[$EBLACK\]\[$GREEN\]$(lang_version)\[$RED\]$(parse_git_branch)$(git_status)\[$NO_COLOR\]\$ "
 }
 
 PROMPT_COMMAND=set_ps1
