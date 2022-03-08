@@ -45,8 +45,8 @@ alias reload='source ~/.bashrc'
 alias ea='mvim -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
 alias ee="mvim ~/bin/dotfiles/bash/env"
 
-function cdc() { 
-    cd $1; ls 
+function cdc() {
+    cd $1; ls
 }
 
 alias cls='clear; ls'
@@ -62,7 +62,7 @@ alias '..'='cd ..'
 alias '...'='cd ../..'
 alias '....'='cd ../../..'
 alias '.....'='cd ../../../..'
-      
+
 alias '..2'='cd ../..'
 alias '..3'='cd ../../..'
 alias '..4'='cd ../../../..'
@@ -72,3 +72,8 @@ alias iphonesim='/Applications/Xcode.app/Contents/Applications/iPhone\ Simulator
 
 
 alias cath='highlight --out-format=xterm256'
+
+alias nbuild="time dotnet build --debug=true --no-dependencies --no-restore && dotnet run --no-build --debug=true"
+alias nrun="dotnet run --no-build --debug=true"
+alias ntest="dotnet test --no-build"
+alias nbtest="time dotnet build --debug=true --no-dependencies --no-restore && dotnet test --no-build"
