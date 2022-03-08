@@ -14,14 +14,14 @@ tab () {
 EOF
 }
 
-function take() { 
+function take() {
     mkdir -p "$1"
-    cd "$1" 
+    cd "$1"
 }
 
 function cd() {
     new_directory="$*";
-    if [ $# -eq 0 ]; then 
+    if [ $# -eq 0 ]; then
         new_directory=${HOME};
     fi;
     builtin cd "${new_directory}" && [[ -s .nvmrc ]] && nvm use
@@ -38,8 +38,8 @@ function bak() {
   cp "$1" "$1.bak"
 }
 
-function killnamed () { 
-    ps ax | grep $1 | grep -x "grep" | cut -d ' ' -f 1 | xargs kill 
+function killnamed () {
+    ps ax | grep $1 | grep -x "grep" | cut -d ' ' -f 1 | xargs kill
 }
 
 # Outputs 1 when the given command is found in PATH. Outputs 0 otherwise.
@@ -56,16 +56,20 @@ function command_exists {
 # === Git ===
 
 # Commit pending changes and quote all args as message
-function gam() { 
+function gam() {
     git commit -v -a -m "$*"
 }
 
-function gm() { 
+function gm() {
     git commit -v -m "$*"
 }
 
 function gcm() {
-  git checkout master
+  git checkout main
+}
+
+function gcd() {
+  git checkout $(git remote show origin | awk '/HEAD branch/ {print $NF}')
 }
 
 function gpop() {
@@ -102,7 +106,7 @@ if [ $(command_exists git) == 0 ]; then
   function get_git_prompt_info() {
     echo ""
   }
-  function git_status() { 
+  function git_status() {
     echo ""
   }
 fi
