@@ -26,7 +26,7 @@ _complete_exp_projects ()
 {
         COMPREPLY=()
         cur="${COMP_WORDS[COMP_CWORD]}"
-        comp_proj=`ls /Users/jens/code/work/scg/exp/code | xargs `
+        comp_proj=`ls /Users/jenscarlen/code/offerta/ | xargs `
         COMPREPLY=( $(compgen -W "${comp_proj}" -- $cur))
         return 0
 }
